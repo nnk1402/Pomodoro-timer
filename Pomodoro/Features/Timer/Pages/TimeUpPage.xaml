@@ -1,0 +1,11 @@
+<Page x:Class="Pomodoro.Features.Timer.Pages.TimeUpPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:theme="clr-namespace:Pomodoro.Themes" Background="Transparent" Title="Hoàn thành phiên">
+    <Page.Resources><ResourceDictionary><ResourceDictionary.MergedDictionaries><theme:ThemeResources WallpaperAware="True"/></ResourceDictionary.MergedDictionaries></ResourceDictionary></Page.Resources>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="16">
+        <Border Background="{DynamicResource AccentSoftBrush}" Width="88" Height="88" CornerRadius="44" HorizontalAlignment="Center" Margin="0,0,0,26">
+            <TextBlock Text="✓" FontSize="40" Foreground="{DynamicResource AccentBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Border>
+        <TextBlock Text="Một phiên trọn vẹn." FontSize="28" FontWeight="SemiBold" TextAlignment="Center"/>
+        <TextBlock Text="Bạn đã giữ được nhịp của mình.&#x0a;Phiên tiếp theo sẽ bắt đầu khi chuông kết thúc." FontSize="14" Foreground="{DynamicResource MutedBrush}" TextAlignment="Center" LineHeight="24" Margin="0,14,0,26"/>
+        <Button Content="Sang phiên tiếp theo  →" Style="{StaticResource PrimaryButton}" Click="Button_Click" HorizontalAlignment="Center"/>
+    </StackPanel>
+</Page>

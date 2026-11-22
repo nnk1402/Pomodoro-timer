@@ -1,3 +1,5 @@
+using Pomodoro.Features.Settings;
+using Pomodoro.Themes;
 using System.Windows;
 
 namespace Pomodoro;

@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\source\\repos\\Pomodoro\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9FB800A2-5344-2C8E-4C1C-7C185BDEB872}|Pomodoro\\Pomodoro.csproj|c:\\users\\admin\\source\\repos\\pomodoro\\pomodoro\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9FB800A2-5344-2C8E-4C1C-7C185BDEB872}|Pomodoro\\Pomodoro.csproj|solutionrelative:pomodoro\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9FB800A2-5344-2C8E-4C1C-7C185BDEB872}|Pomodoro\\Pomodoro.csproj|c:\\users\\admin\\source\\repos\\pomodoro\\pomodoro\\page\\timeuppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9FB800A2-5344-2C8E-4C1C-7C185BDEB872}|Pomodoro\\Pomodoro.csproj|solutionrelative:pomodoro\\page\\timeuppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9FB800A2-5344-2C8E-4C1C-7C185BDEB872}|Pomodoro\\Pomodoro.csproj|c:\\users\\admin\\source\\repos\\pomodoro\\pomodoro\\page\\workpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9FB800A2-5344-2C8E-4C1C-7C185BDEB872}|Pomodoro\\Pomodoro.csproj|solutionrelative:pomodoro\\page\\workpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{9FB800A2-5344-2C8E-4C1C-7C185BDEB872}|Pomodoro\\Pomodoro.csproj|c:\\users\\admin\\source\\repos\\pomodoro\\pomodoro\\shell\\mainwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{9FB800A2-5344-2C8E-4C1C-7C185BDEB872}|Pomodoro\\Pomodoro.csproj|solutionrelative:pomodoro\\shell\\mainwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -847,37 +839,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\Pomodoro\\Pomodoro\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "Pomodoro\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\Pomodoro\\Pomodoro\\MainWindow.xaml",
-              "RelativeToolTip": "Pomodoro\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-11-22T04:32:24.388Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "timeUpPage.xaml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\Pomodoro\\Pomodoro\\Page\\timeUpPage.xaml",
-              "RelativeDocumentMoniker": "Pomodoro\\Page\\timeUpPage.xaml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\Pomodoro\\Pomodoro\\Page\\timeUpPage.xaml",
-              "RelativeToolTip": "Pomodoro\\Page\\timeUpPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-11-22T04:32:16.42Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "workPage.xaml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\Pomodoro\\Pomodoro\\Page\\workPage.xaml",
-              "RelativeDocumentMoniker": "Pomodoro\\Page\\workPage.xaml",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\Pomodoro\\Pomodoro\\Page\\workPage.xaml",
-              "RelativeToolTip": "Pomodoro\\Page\\workPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-11-22T04:32:10.916Z",
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\Pomodoro\\Pomodoro\\Shell\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Pomodoro\\Shell\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\Pomodoro\\Pomodoro\\Shell\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Pomodoro\\Shell\\MainWindow.xaml.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAADwv1EAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-22T10:11:33.75Z",
               "EditorCaption": ""
             }
           ]

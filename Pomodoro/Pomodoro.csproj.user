@@ -3,21 +3,5 @@
   <PropertyGroup>
     <_LastSelectedProfileId>C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Update="Page\longRestPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Page\restPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Page\Setting.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Page\timeUpPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Page\workPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
+  <ItemGroup />
 </Project>

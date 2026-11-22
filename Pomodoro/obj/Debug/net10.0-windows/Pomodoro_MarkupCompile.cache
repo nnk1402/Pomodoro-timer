@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET10_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NET10_0_OR_GREATER;NETCOREAPP1_0_OR_GREATER;NETCOREAPP1_1_OR_GREATER;NETCOREAPP2_0_OR_GREATER;NETCOREAPP2_1_OR_GREATER;NETCOREAPP2_2_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\App.xaml
-8523854718
-1546260945
-171784525019
+9-1844456686
+1328821323
+33784518569
 206890450207
-Controls\TimerDisplay.xaml;MainWindow.xaml;Page\longRestPage.xaml;Page\restPage.xaml;Page\Setting.xaml;Page\timeUpPage.xaml;Page\workPage.xaml;Theme.xaml;
+Features\Settings\SettingsWindow.xaml;Features\Timer\Controls\TimerDisplay.xaml;Features\Timer\Pages\LongRestPage.xaml;Features\Timer\Pages\RestPage.xaml;Features\Timer\Pages\TimeUpPage.xaml;Features\Timer\Pages\WorkPage.xaml;Features\Todo\TodoListView.xaml;Shell\MainWindow.xaml;Themes\Theme.xaml;
 
 False
 

@@ -1,0 +1,3 @@
+<local:TimerPage x:Class="Pomodoro.Features.Timer.Pages.WorkPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Pomodoro.Features.Timer" xmlns:controls="clr-namespace:Pomodoro.Features.Timer.Controls" Background="Transparent" Title="Tập trung vào một việc">
+    <controls:TimerDisplay x:Name="Display" VerticalAlignment="Stretch"/>
+</local:TimerPage>

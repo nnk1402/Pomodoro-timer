@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -9,31 +9,31 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Asset\Alarm\alarm_sound.m4a" />
-    <None Remove="Asset\Alarm\alarm_sound.mp3" />
-    <None Remove="Asset\Image\breaktimeWallpaper.jpg" />
-    <None Remove="Asset\Image\longRestBackground.png" />
-    <None Remove="Asset\Image\mainmenu.png" />
-    <None Remove="Asset\Image\studyTime.jpg" />
-    <None Remove="Asset\Image\timeUpBackground.jpg" />
+    <None Remove="Assets\Sounds\alarm_sound.m4a" />
+    <None Remove="Assets\Sounds\alarm_sound.mp3" />
+    <None Remove="Assets\Images\breaktimeWallpaper.jpg" />
+    <None Remove="Assets\Images\longRestBackground.png" />
+    <None Remove="Assets\Images\mainmenu.png" />
+    <None Remove="Assets\Images\studyTime.jpg" />
+    <None Remove="Assets\Images\timeUpBackground.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Asset\Alarm\alarm_sound.mp3">
+    <Content Include="Assets\Sounds\alarm_sound.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Asset\Image\breaktimeWallpaper.jpg" />
-    <Resource Include="Asset\Image\longRestBackground.png" />
-    <Resource Include="Asset\Image\mainmenu.png" />
-    <Resource Include="Asset\Image\studyTime.jpg" />
-    <Resource Include="Asset\Image\timeUpBackground.jpg" />
+    <Resource Include="Assets\Images\breaktimeWallpaper.jpg" />
+    <Resource Include="Assets\Images\longRestBackground.png" />
+    <Resource Include="Assets\Images\mainmenu.png" />
+    <Resource Include="Assets\Images\studyTime.jpg" />
+    <Resource Include="Assets\Images\timeUpBackground.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Asset\Alarm\CurrentAlarm\" />
+    <Folder Include="Assets\Sounds\CurrentAlarm\" />
   </ItemGroup>
 
 </Project>

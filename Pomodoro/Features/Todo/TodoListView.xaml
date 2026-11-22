@@ -1,0 +1,142 @@
+<UserControl x:Class="Pomodoro.Features.Todo.TodoListView"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:theme="clr-namespace:Pomodoro.Themes">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries><theme:ThemeResources WallpaperAware="True"/></ResourceDictionary.MergedDictionaries>
+            <Style x:Key="QuietButton" TargetType="Button" BasedOn="{StaticResource SecondaryButton}">
+                <Setter Property="Background" Value="Transparent"/><Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="4"/><Setter Property="MinHeight" Value="28"/><Setter Property="MinWidth" Value="28"/>
+            </Style>
+            <Style x:Key="TaskCheck" TargetType="CheckBox">
+                <Setter Property="FocusVisualStyle" Value="{StaticResource KeyboardFocusRing}"/>
+                <Setter Property="Cursor" Value="Hand"/><Setter Property="Width" Value="26"/><Setter Property="Height" Value="32"/>
+                <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="CheckBox">
+                    <Border x:Name="Mark" Width="18" Height="18" CornerRadius="9" BorderThickness="1.5" BorderBrush="{DynamicResource MutedBrush}" Background="Transparent" HorizontalAlignment="Left">
+                        <TextBlock x:Name="Check" Text="✓" Foreground="{DynamicResource OnAccentBrush}" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" theme:WallpaperText.SuppressShadow="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True"><Setter TargetName="Mark" Property="Background" Value="{DynamicResource AccentBrush}"/><Setter TargetName="Mark" Property="BorderBrush" Value="{DynamicResource AccentBrush}"/><Setter TargetName="Check" Property="Visibility" Value="Visible"/></Trigger>
+                        <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Mark" Property="BorderBrush" Value="{DynamicResource AccentBrush}"/></Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate></Setter.Value></Setter>
+            </Style>
+            <!-- A quiet text disclosure, replacing the native circular Expander arrow. -->
+            <Style x:Key="DetailsExpander" TargetType="Expander">
+                <Setter Property="Foreground" Value="{DynamicResource MutedBrush}"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Expander">
+                    <StackPanel>
+                        <ToggleButton x:Name="Disclosure" Content="{TemplateBinding Header}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="Left" FocusVisualStyle="{StaticResource KeyboardFocusRing}"
+                                      IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Cursor="Hand">
+                            <ToggleButton.Template><ControlTemplate TargetType="ToggleButton">
+                                <Border x:Name="FocusLine" Background="Transparent" BorderBrush="Transparent" BorderThickness="1" CornerRadius="4" Padding="0,3">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True"><Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/></Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate></ToggleButton.Template>
+                        </ToggleButton>
+                        <ContentPresenter x:Name="DetailsContent" ContentSource="Content" Visibility="Collapsed"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers><Trigger Property="IsExpanded" Value="True"><Setter TargetName="DetailsContent" Property="Visibility" Value="Visible"/></Trigger></ControlTemplate.Triggers>
+                </ControlTemplate></Setter.Value></Setter>
+            </Style>
+            <DataTemplate x:Key="TaskTemplate">
+                <Border x:Name="TaskRow" Background="Transparent" CornerRadius="8" Padding="4,4" Margin="0,1">
+                    <Grid>
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="16"/><ColumnDefinition Width="26"/><ColumnDefinition/><ColumnDefinition Width="28"/></Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                        <Border x:Name="Grip" Background="Transparent" Cursor="SizeAll" Focusable="True" FocusVisualStyle="{StaticResource KeyboardFocusRing}" VerticalAlignment="Top" Height="32" Opacity="0.35"
+                                PreviewMouseLeftButtonDown="Grip_MouseDown" PreviewMouseMove="Grip_MouseMove" PreviewMouseLeftButtonUp="Grip_MouseUp"
+                                LostMouseCapture="Grip_LostCapture" PreviewKeyDown="Grip_KeyDown" ToolTip="Kéo để sắp xếp · Alt+↑/↓"
+                                AutomationProperties.Name="{Binding Title, StringFormat=Sắp xếp công việc: {0}}">
+                            <TextBlock Text="⠿" FontSize="15" Foreground="{DynamicResource MutedBrush}" VerticalAlignment="Center"/>
+                        </Border>
+                        <CheckBox Grid.Column="1" Style="{StaticResource TaskCheck}" IsChecked="{Binding IsCompleted, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.Name="{Binding Title}"/>
+                        <TextBlock x:Name="TaskTitle" Grid.Column="2" Text="{Binding Title}" Foreground="{DynamicResource InkBrush}" FontSize="14" TextWrapping="Wrap" Margin="0,6,6,3"/>
+                        <Button x:Name="DeleteButton" Grid.Column="3" Style="{StaticResource QuietButton}" VerticalAlignment="Top" Click="Delete_Click" Opacity="0.45"
+                                ToolTip="Xóa công việc" AutomationProperties.Name="{Binding Title, StringFormat=Xóa công việc: {0}}">
+                            <Path Width="14" Height="16" Stretch="Uniform" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                  StrokeThickness="1.4" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+                                  Data="M 1,4 L 13,4 M 5,4 L 5,2 L 9,2 L 9,4 M 2.5,4 L 3.5,15 L 10.5,15 L 11.5,4 M 5.5,7 L 5.8,12 M 8.5,7 L 8.2,12"/>
+                        </Button>
+                        <Expander Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource DetailsExpander}" Margin="0,0,0,3"
+                                  AutomationProperties.Name="{Binding Title, StringFormat=Chi tiết công việc: {0}}">
+                            <Expander.Header>
+                                <StackPanel Orientation="Horizontal"><TextBlock Text="≡" FontSize="16" Margin="0,0,7,0"/>
+                                    <TextBlock x:Name="DetailsHint" Text="Chi tiết" FontSize="12" VerticalAlignment="Center"/></StackPanel>
+                            </Expander.Header>
+                            <TextBox Text="{Binding Details, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap"
+                                     MinHeight="48" MaxHeight="120" MaxLength="10000" VerticalScrollBarVisibility="Hidden" Padding="0,5" FontSize="13" Margin="0,0,6,5"
+                                     Background="Transparent" BorderThickness="0" Foreground="{DynamicResource MutedBrush}" CaretBrush="{DynamicResource InkBrush}"
+                                     Effect="{DynamicResource WallpaperTextShadow}"
+                                     AutomationProperties.Name="{Binding Title, StringFormat=Ghi chú cho: {0}}"/>
+                        </Expander>
+                    </Grid>
+                </Border>
+                <DataTemplate.Triggers>
+                    <Trigger SourceName="TaskRow" Property="IsMouseOver" Value="True"><Setter TargetName="Grip" Property="Opacity" Value="1"/><Setter TargetName="DeleteButton" Property="Opacity" Value="1"/></Trigger>
+                    <Trigger SourceName="TaskRow" Property="IsKeyboardFocusWithin" Value="True"><Setter TargetName="Grip" Property="Opacity" Value="1"/><Setter TargetName="DeleteButton" Property="Opacity" Value="1"/></Trigger>
+                    <DataTrigger Binding="{Binding IsCompleted}" Value="True"><Setter TargetName="TaskTitle" Property="TextDecorations" Value="Strikethrough"/><Setter TargetName="TaskTitle" Property="Foreground" Value="{DynamicResource MutedBrush}"/></DataTrigger>
+                    <DataTrigger Binding="{Binding Details}" Value=""><Setter TargetName="DetailsHint" Property="Text" Value="Thêm chi tiết"/></DataTrigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <AdornerDecorator>
+        <Grid Margin="16,14,16,12">
+            <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <TextBlock Text="Việc làm hôm nay" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                <Button Grid.Column="1" Content="×" Style="{StaticResource QuietButton}" FontSize="18" Click="Close_Click" ToolTip="Thu gọn danh sách" AutomationProperties.Name="Thu gọn danh sách công việc"/>
+            </Grid>
+            <TextBlock x:Name="SummaryText" Grid.Row="1" Foreground="{DynamicResource MutedBrush}" FontSize="12" Margin="0,2,0,10" AutomationProperties.LiveSetting="Polite"/>
+            <Border Grid.Row="2" Background="{DynamicResource HoverBrush}" CornerRadius="20" Margin="0,0,0,10" Padding="12,0,6,0">
+                <Grid MinHeight="40">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="24"/><ColumnDefinition/><ColumnDefinition Width="30"/></Grid.ColumnDefinitions>
+                    <TextBlock Text="＋" Foreground="{DynamicResource AccentBrush}" FontSize="20" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="DraftHint" Grid.Column="1" Text="Thêm việc cần làm" Foreground="{DynamicResource MutedBrush}" FontSize="14" VerticalAlignment="Center" IsHitTestVisible="False">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding Text, ElementName=DraftText}" Value=""/>
+                                            <Condition Binding="{Binding IsKeyboardFocusWithin, ElementName=DraftText}" Value="False"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <TextBox x:Name="DraftText" Grid.Column="1" Background="Transparent" BorderThickness="0" CaretBrush="White" FontSize="14" MaxLength="240" Padding="0,9" AutomationProperties.Name="Nội dung công việc mới" PreviewKeyDown="Draft_KeyDown" TextChanged="Draft_TextChanged"/>
+                    <Button x:Name="AddButton" Grid.Column="2" Content="↵" Style="{StaticResource QuietButton}" Padding="2" FontSize="16" Click="Add_Click" IsEnabled="False" Visibility="Collapsed" ToolTip="Thêm công việc (Enter)" AutomationProperties.Name="Thêm công việc"/>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="3">
+                <ScrollViewer x:Name="TaskScroll" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" PanningMode="VerticalOnly">
+                    <StackPanel>
+                        <ItemsControl x:Name="TaskItems" ItemTemplate="{StaticResource TaskTemplate}"/>
+                        <Expander x:Name="CompletedSection" Style="{StaticResource DetailsExpander}" Margin="16,12,0,4">
+                            <Expander.Header><TextBlock x:Name="CompletedCount" FontWeight="SemiBold" FontSize="13"/></Expander.Header>
+                            <ItemsControl x:Name="CompletedItems" ItemTemplate="{StaticResource TaskTemplate}" Margin="-16,5,0,0"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+                <StackPanel x:Name="EmptyState" VerticalAlignment="Top" Margin="20,14,8,0" IsHitTestVisible="False">
+                    <TextBlock Text="Bắt đầu từ một việc nhỏ." FontWeight="SemiBold" TextWrapping="Wrap"/>
+                    <TextBlock Text="Thêm việc bạn muốn tập trung hôm nay." Foreground="{DynamicResource MutedBrush}" FontSize="12" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                </StackPanel>
+            </Grid>
+            <StackPanel Grid.Row="4" Margin="0,6,0,0">
+                <TextBlock x:Name="SaveError" Visibility="Collapsed" Foreground="{DynamicResource ErrorBrush}" FontSize="12" TextWrapping="Wrap" AutomationProperties.LiveSetting="Assertive"/>
+                <Button x:Name="RetryButton" Visibility="Collapsed" Content="Thử lưu lại" Style="{StaticResource QuietButton}" Margin="0,4,0,0" HorizontalAlignment="Left" Click="Retry_Click"/>
+            </StackPanel>
+        </Grid>
+    </AdornerDecorator>
+</UserControl>
