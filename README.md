@@ -2,7 +2,7 @@
 
 Ứng dụng đồng hồ Pomodoro cho Windows, viết bằng **C# / WPF / .NET 10**. Giao diện tiếng Việt với ba chế độ tập trung, nghỉ ngắn và nghỉ dài.
 
-![Giao diện Pomodoro](docs/screenshots/main.png)
+![Pomodoro với hình nền tùy chỉnh và danh sách công việc](docs/screenshots/main-background.png)
 
 ## Tính năng
 
@@ -17,7 +17,7 @@
 - Danh sách công việc có ghi chú, kéo thả sắp xếp, nhóm đã hoàn thành và animation chuyển trạng thái.
 - Toàn màn hình bằng **F11 / Alt + Enter**; nền chọn chế độ trượt theo nút được chọn.
 
-Ảnh minh họa trong README có thể chưa phản ánh đầy đủ các thay đổi giao diện mới nhất.
+Ảnh giao diện được render từ bản Release ngày **22/11/2026**, sử dụng công việc mẫu. Ảnh tĩnh minh họa bố cục, hình nền và ghi chú; không thể hiện các animation.
 
 ## Yêu cầu
 
@@ -65,7 +65,9 @@ Profile `Pomodoro/Properties/PublishProfiles/FolderProfile.pubxml` hiện trỏ 
 
 Đổi sáng/tối trong **Cài đặt → Giao diện**. Chọn **Sáng**, **Tối** hoặc **Hệ thống** để theo giao diện ứng dụng của Windows, rồi bấm **Lưu cài đặt**. Thay đổi được xem trước ngay; **Hủy** khôi phục giao diện đã lưu. Đổi giao diện không đặt lại bộ đếm.
 
-![Giao diện tối](docs/screenshots/main-dark.png)
+| Giao diện sáng | Giao diện tối |
+| --- | --- |
+| ![Giao diện sáng với danh sách công việc](docs/screenshots/main.png) | ![Giao diện tối với danh sách công việc](docs/screenshots/main-dark.png) |
 
 Chu kỳ:
 
@@ -91,6 +93,10 @@ Nghỉ dài sau **4 phiên tập trung hoàn thành**. Chọn chế độ bằng
 Viền focus được giới hạn cho điều hướng **Tab / Shift + Tab** trong ứng dụng. Bấm chuột hoặc chuyển cửa sổ bằng **Alt + Tab** sẽ ẩn viền. Viền này khác với nền đánh dấu chế độ đang chọn; nền chọn vẫn hiện và trượt giữa ba nút chế độ.
 
 ## Cài đặt và hành vi bộ đếm
+
+| Cài đặt — giao diện sáng | Cài đặt — giao diện tối |
+| --- | --- |
+| ![Cài đặt thời lượng, theme và hình nền trong giao diện sáng](docs/screenshots/settings.png) | ![Cài đặt thời lượng, theme và hình nền trong giao diện tối](docs/screenshots/settings-dark.png) |
 
 - Cấu hình được lưu ở `%LOCALAPPDATA%/Pomodoro/settings.json`. Tệp cấu hình thiếu hoặc không đọc được không ngăn ứng dụng khởi động.
 - Nhạc chuông tùy chọn được tham chiếu tại vị trí bạn chọn. Nếu tệp không còn tồn tại lúc mở ứng dụng, chuông mặc định sẽ được dùng.
