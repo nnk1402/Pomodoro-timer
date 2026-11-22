@@ -1,0 +1,6 @@
+D:\myApp\pomodoro\Pomodoro.exe
+D:\myApp\pomodoro\Asset\Alarm\alarm_sound.mp3
+D:\myApp\pomodoro\Pomodoro.dll
+D:\myApp\pomodoro\Pomodoro.deps.json
+D:\myApp\pomodoro\Pomodoro.runtimeconfig.json
+D:\myApp\pomodoro\Pomodoro.pdb

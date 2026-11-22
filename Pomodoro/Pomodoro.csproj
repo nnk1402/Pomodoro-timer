@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Asset\Alarm\alarm_sound.m4a" />
+    <None Remove="Asset\Alarm\alarm_sound.mp3" />
+    <None Remove="Asset\Image\breaktimeWallpaper.jpg" />
+    <None Remove="Asset\Image\longRestBackground.png" />
+    <None Remove="Asset\Image\mainmenu.png" />
+    <None Remove="Asset\Image\studyTime.jpg" />
+    <None Remove="Asset\Image\timeUpBackground.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Asset\Alarm\alarm_sound.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Asset\Image\breaktimeWallpaper.jpg" />
+    <Resource Include="Asset\Image\longRestBackground.png" />
+    <Resource Include="Asset\Image\mainmenu.png" />
+    <Resource Include="Asset\Image\studyTime.jpg" />
+    <Resource Include="Asset\Image\timeUpBackground.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Asset\Alarm\CurrentAlarm\" />
+  </ItemGroup>
+
+</Project>
