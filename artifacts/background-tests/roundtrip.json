@@ -1,0 +1,13 @@
+{
+  "WorkMinutes": 25,
+  "RestMinutes": 5,
+  "LongRestMinutes": 15,
+  "AlarmPath": null,
+  "Theme": "System",
+  "Background": {
+    "Kind": "Image",
+    "Path": "C:\\Users\\ADMIN\\source\\repos\\Pomodoro\\artifacts\\background-tests\\bright.png",
+    "Darkness": 0.25,
+    "SurfaceOpacity": 0.5
+  }
+}

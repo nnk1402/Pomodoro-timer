@@ -2,9 +2,6 @@
 /docs/screenshots/
 /tests/Pomodoro.RegressionTests/
 
-# Build, publish, and backup outputs
-/artifacts/
-
 # Local product and design notes (case-insensitive filenames)
 /[Pp][Rr][Oo][Dd][Uu][Cc][Tt].[Mm][Dd]
 /[Dd][Ee][Ss][Ii][Gg][Nn].[Mm][Dd]
