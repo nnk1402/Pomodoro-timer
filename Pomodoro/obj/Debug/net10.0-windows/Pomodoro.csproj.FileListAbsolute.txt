@@ -37,3 +37,14 @@ C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\obj\Debug\net10.0-windows\Features
 C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\obj\Debug\net10.0-windows\Shell\MainWindow.baml
 C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\obj\Debug\net10.0-windows\Features\Todo\TodoListView.g.cs
 C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\obj\Debug\net10.0-windows\Features\Todo\TodoListView.baml
+C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\bin\Debug\net10.0-windows\NAudio.dll
+C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\bin\Debug\net10.0-windows\NAudio.Asio.dll
+C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\bin\Debug\net10.0-windows\NAudio.Core.dll
+C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\bin\Debug\net10.0-windows\NAudio.Midi.dll
+C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\bin\Debug\net10.0-windows\NAudio.Wasapi.dll
+C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\bin\Debug\net10.0-windows\NAudio.WinForms.dll
+C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\bin\Debug\net10.0-windows\NAudio.WinMM.dll
+C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\obj\Debug\net10.0-windows\Pomodoro.csproj.AssemblyReference.cache
+C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\obj\Debug\net10.0-windows\Features\Music\MusicPlayerView.g.cs
+C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\obj\Debug\net10.0-windows\Features\Music\MusicPlayerView.baml
+C:\Users\ADMIN\source\repos\Pomodoro\Pomodoro\obj\Debug\net10.0-windows\Pomodoro.csproj.Up2Date

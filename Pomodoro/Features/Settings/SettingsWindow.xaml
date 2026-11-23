@@ -23,10 +23,9 @@
                 </UniformGrid>
                 <TextBlock Text="Hình nền" FontSize="16" FontWeight="SemiBold"/>
                 <TextBlock Text="Xem trước trực tiếp ở cửa sổ chính. Lưu để giữ thay đổi, Hủy để khôi phục." Foreground="{DynamicResource MutedBrush}" FontSize="12" Margin="0,6,0,12" TextWrapping="Wrap"/>
-                <UniformGrid Columns="3">
+                <UniformGrid Columns="2">
                     <RadioButton x:Name="DefaultBackground" GroupName="Background" Content="Mặc định" Style="{StaticResource ModeButton}" Padding="10,12" Checked="Background_Checked"/>
-                    <RadioButton x:Name="ImageBackground" GroupName="Background" Content="Ảnh tĩnh" Style="{StaticResource ModeButton}" Padding="10,12" Checked="Background_Checked"/>
-                    <RadioButton x:Name="VideoBackground" GroupName="Background" Content="Video" Style="{StaticResource ModeButton}" Padding="10,12" Checked="Background_Checked"/>
+                    <RadioButton x:Name="CustomBackground" GroupName="Background" Content="Ảnh / Video" Style="{StaticResource ModeButton}" Padding="10,12" Checked="Background_Checked" AutomationProperties.Name="Hình nền ảnh hoặc video"/>
                 </UniformGrid>
                 <Grid Margin="0,2,0,0">
                     <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>

@@ -4,6 +4,7 @@
     <SolidColorBrush x:Key="InkBrush" Color="#172E30"/>
     <SolidColorBrush x:Key="MutedBrush" Color="#596D70"/>
     <SolidColorBrush x:Key="AccentBrush" Color="#146B5E"/>
+    <SolidColorBrush x:Key="AccentInkBrush" Color="#146B5E"/>
     <SolidColorBrush x:Key="AccentSoftBrush" Color="#E7F2EC"/>
     <SolidColorBrush x:Key="LineBrush" Color="#DCE5E3"/>
     <SolidColorBrush x:Key="TrackBrush" Color="#E6EEEB"/>
@@ -130,7 +131,7 @@
                         <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Chrome" Property="Background" Value="{DynamicResource HoverBrush}"/></Trigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="Chrome" Property="Background" Value="{DynamicResource AccentSoftBrush}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource AccentInkBrush}"/>
                             <Setter Property="FontWeight" Value="SemiBold"/>
                             <Setter Property="theme:WallpaperText.SuppressShadow" Value="True"/>
                         </Trigger>

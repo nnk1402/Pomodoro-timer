@@ -1,4 +1,5 @@
 <Window x:Class="Pomodoro.Shell.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:theme="clr-namespace:Pomodoro.Themes" xmlns:controls="clr-namespace:Pomodoro.Features.Timer.Controls" xmlns:todo="clr-namespace:Pomodoro.Features.Todo" xmlns:background="clr-namespace:Pomodoro.Features.Background"
+ xmlns:music="clr-namespace:Pomodoro.Features.Music"
  Title="Pomodoro NNK1402" Width="1120" Height="800" MinWidth="820" MinHeight="700" WindowStartupLocation="CenterScreen" WindowState="Maximized"
  Background="{DynamicResource CanvasBrush}" FontFamily="Segoe UI" FontSize="14" PreviewKeyDown="Window_PreviewKeyDown" theme:KeyboardFocusFeedback.Enabled="True">
     <Window.Resources>
@@ -14,7 +15,7 @@
                         <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Chrome" Property="Background" Value="{DynamicResource HoverBrush}"/><Setter Property="theme:WallpaperText.SuppressShadow" Value="True"/></Trigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="Chrome" Property="Background" Value="Transparent"/>
-                            <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource AccentInkBrush}"/>
                             <Setter Property="FontWeight" Value="SemiBold"/>
                             <Setter Property="theme:WallpaperText.SuppressShadow" Value="True"/>
                         </Trigger>
@@ -41,7 +42,7 @@
                     <Border Width="34" Height="34" CornerRadius="10" Background="{DynamicResource AccentBrush}" Margin="0,0,10,0">
                         <Grid><Ellipse Stroke="{DynamicResource OnAccentBrush}" StrokeThickness="1.6" Width="19" Height="19"/><Path Data="M 17,10 L 17,17 L 22,17" Stroke="{DynamicResource OnAccentBrush}" StrokeThickness="1.6" StrokeLineJoin="Round"/></Grid>
                     </Border>
-                    <TextBlock Text="pomodoro" FontSize="22" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    <TextBlock Text="Pomodoro" FontSize="22" FontWeight="SemiBold" VerticalAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1">
                     <TextBlock Text="Không gian của bạn" Foreground="{DynamicResource MutedBrush}" FontSize="12" Margin="16,0,0,14"/>
@@ -62,6 +63,7 @@
                     </RadioButton>
                         </StackPanel>
                     </Grid>
+                    <music:MusicPlayerView x:Name="MusicPlayer" Margin="0,12,0,0" WallpaperSource="{Binding ElementName=WallpaperViewport}"/>
                 </StackPanel>
                 <StackPanel Grid.Row="3">
                     <Border BorderBrush="{DynamicResource LineBrush}" BorderThickness="0,1,0,0" Padding="12,20,12,24">

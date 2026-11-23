@@ -1,0 +1,39 @@
+<UserControl x:Class="Pomodoro.Features.Todo.InlineDetailsEditor"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ x:Name="DetailsRoot" FontSize="13" Foreground="{DynamicResource MutedBrush}">
+    <Grid x:Name="RevealHost" ClipToBounds="True">
+        <Grid x:Name="Body">
+            <Button x:Name="Preview" Click="Preview_Click" Background="Transparent" BorderThickness="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top"
+                    Cursor="IBeam" MinHeight="22" Foreground="{Binding Foreground, ElementName=DetailsRoot}"
+                    AutomationProperties.Name="Sửa chi tiết công việc">
+                <Button.Template><ControlTemplate TargetType="Button">
+                    <Border Background="Transparent" Padding="0,2">
+                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+                    </Border>
+                </ControlTemplate></Button.Template>
+                <Grid>
+                    <TextBlock x:Name="DetailsPreview" Text="{Binding Text, ElementName=DetailsRoot}" TextWrapping="Wrap"
+                               MaxHeight="120" TextTrimming="CharacterEllipsis" ToolTip="{Binding Text, ElementName=DetailsRoot}"
+                               Foreground="{Binding Foreground, ElementName=DetailsRoot}"/>
+                    <StackPanel x:Name="Hint" Orientation="Horizontal" Visibility="Collapsed">
+                        <Path Data="M 0,1 L 14,1 M 0,6 L 14,6 M 0,11 L 8,11" StrokeThickness="1.5"
+                              Stroke="{Binding Foreground, ElementName=DetailsRoot}" Width="15" Height="13" Margin="0,2,7,0"/>
+                        <TextBlock Text="Chi tiết" Foreground="{Binding Foreground, ElementName=DetailsRoot}"/>
+                    </StackPanel>
+                </Grid>
+            </Button>
+            <TextBox x:Name="Editor" Text="{Binding Text, ElementName=DetailsRoot, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Visibility="Collapsed" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="False"
+                     MinHeight="22" MaxHeight="160" MaxLength="10000" FontSize="13"
+                     Padding="0,2" Background="Transparent" BorderThickness="0"
+                     Foreground="{Binding Foreground, ElementName=DetailsRoot}" CaretBrush="{DynamicResource InkBrush}"
+                     Effect="{DynamicResource WallpaperTextShadow}" FocusVisualStyle="{x:Null}"
+                     VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled"
+                     TextChanged="Editor_TextChanged" LostKeyboardFocus="Editor_LostKeyboardFocus"
+                     PreviewKeyDown="Editor_PreviewKeyDown" ContextMenuOpening="Editor_ContextMenuOpening" ContextMenuClosing="Editor_ContextMenuClosing"
+                     AutomationProperties.Name="Chi tiết công việc"/>
+        </Grid>
+    </Grid>
+</UserControl>

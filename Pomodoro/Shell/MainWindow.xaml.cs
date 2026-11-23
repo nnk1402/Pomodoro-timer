@@ -46,6 +46,7 @@ public partial class MainWindow : Window
             (frMain.Content as TimeUpPage)?.Cancel();
             Alarm._player.Stop();
             TodoList.Flush();
+            MusicPlayer.Dispose();
             Wallpaper.Dispose();
         };
     }

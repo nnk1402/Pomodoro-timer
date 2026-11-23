@@ -65,22 +65,27 @@ internal static class ThemeManager
 
     private static void ApplyPalette(ResourceDictionary resources)
     {
+        bool lightWallpaper = backgroundActive && !IsDark
+            && resources is ThemeResources { WallpaperAware: true };
+        bool darkSurface = IsDark || lightWallpaper;
         var colors = new Dictionary<string, string>
         {
             ["CanvasBrush"] = IsDark ? "#101A1B" : "#F5F7F8",
-            ["SurfaceBrush"] = IsDark ? "#182526" : "#FFFFFF",
-            ["InkBrush"] = IsDark ? "#E5F0ED" : "#172E30",
-            ["MutedBrush"] = backgroundActive ? (IsDark ? "#E0ECE8" : "#243D40") : (IsDark ? "#A6BAB5" : "#596D70"),
+            ["SurfaceBrush"] = darkSurface ? "#182526" : "#FFFFFF",
+            ["InkBrush"] = lightWallpaper ? "#FFFFFF" : IsDark ? "#E5F0ED" : "#172E30",
+            ["MutedBrush"] = lightWallpaper ? "#FFFFFF"
+                : backgroundActive ? (IsDark ? "#E0ECE8" : "#243D40") : (IsDark ? "#A6BAB5" : "#596D70"),
             ["AccentBrush"] = IsDark ? "#78D6BC" : "#146B5E",
-            ["AccentSoftBrush"] = IsDark ? "#203E36" : "#E7F2EC",
+            ["AccentInkBrush"] = lightWallpaper ? "#FFFFFF" : IsDark ? "#78D6BC" : "#146B5E",
+            ["AccentSoftBrush"] = darkSurface ? "#203E36" : "#E7F2EC",
             ["LineBrush"] = IsDark ? "#344846" : "#DCE5E3",
             ["TrackBrush"] = IsDark ? "#263A36" : "#E6EEEB",
-            ["HoverBrush"] = IsDark ? "#263735" : "#EDF1F0",
+            ["HoverBrush"] = darkSurface ? "#263735" : "#EDF1F0",
             ["OnAccentBrush"] = IsDark ? "#102B25" : "#FFFFFF",
-            ["ErrorBrush"] = IsDark ? "#FFB4A9" : "#AE342A",
-            ["ContentBackdropBrush"] = IsDark ? "#101A1B" : "#F5F7F8",
-            ["DisabledBrush"] = IsDark ? "#344846" : "#DCE5E3",
-            ["DisabledInkBrush"] = IsDark ? "#A6BAB5" : "#596D70",
+            ["ErrorBrush"] = darkSurface ? "#FFB4A9" : "#AE342A",
+            ["ContentBackdropBrush"] = darkSurface ? "#101A1B" : "#F5F7F8",
+            ["DisabledBrush"] = darkSurface ? "#344846" : "#DCE5E3",
+            ["DisabledInkBrush"] = lightWallpaper ? "#FFFFFF" : IsDark ? "#A6BAB5" : "#596D70",
             ["PrimaryHoverBrush"] = IsDark ? "#98E5CF" : "#10594E",
             ["PrimaryPressedBrush"] = IsDark ? "#60BDA4" : "#0C483F",
         };
@@ -100,15 +105,14 @@ internal static class ThemeManager
 
     private static DropShadowEffect CreateTextShadow(bool timer)
     {
-        // Light ink gets a white halo; light text in dark mode gets a dark shadow.
-        // The short radius preserves glyph edges without a wide neon glow.
+        // Wallpaper text is light in both themes; a short dark shadow protects it.
         var effect = new DropShadowEffect
         {
-            Color = IsDark ? Colors.Black : Colors.White,
+            Color = Colors.Black,
             BlurRadius = timer ? 6 : 3.5,
-            ShadowDepth = IsDark ? (timer ? 1.5 : 1) : 0,
+            ShadowDepth = timer ? 1.5 : 1,
             Direction = 270,
-            Opacity = IsDark ? 0.95 : 1,
+            Opacity = 0.95,
             RenderingBias = RenderingBias.Performance
         };
         effect.Freeze();

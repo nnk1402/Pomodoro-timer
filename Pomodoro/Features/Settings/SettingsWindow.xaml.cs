@@ -55,8 +55,7 @@ public partial class SettingsWindow : Window
         bool previous = initializing;
         initializing = true;
         DefaultBackground.IsChecked = selectedBackground.Kind == BackgroundKind.Default;
-        ImageBackground.IsChecked = selectedBackground.Kind == BackgroundKind.Image;
-        VideoBackground.IsChecked = selectedBackground.Kind == BackgroundKind.Video;
+        CustomBackground.IsChecked = selectedBackground.Kind != BackgroundKind.Default;
         BackgroundPathText.Text = selectedBackground.Path ?? "Nền mặc định";
         DarknessSlider.Value = selectedBackground.Darkness * 100;
         SurfaceSlider.Value = selectedBackground.SurfaceOpacity * 100;
@@ -88,30 +87,40 @@ public partial class SettingsWindow : Window
     private void Background_Checked(object sender, RoutedEventArgs e)
     {
         if (initializing) return;
-        var kind = VideoBackground.IsChecked == true ? BackgroundKind.Video
-            : ImageBackground.IsChecked == true ? BackgroundKind.Image : BackgroundKind.Default;
-        if (kind == BackgroundKind.Default)
+        if (DefaultBackground.IsChecked == true)
         {
             selectedBackground = new BackgroundOptions();
             PreviewBackground();
         }
-        else ChooseBackground(kind);
+        else ChooseBackground();
     }
 
-    private void ChooseBackground_Click(object sender, RoutedEventArgs e) => ChooseBackground(selectedBackground.Kind);
+    private void ChooseBackground_Click(object sender, RoutedEventArgs e) => ChooseBackground();
 
-    private void ChooseBackground(BackgroundKind kind)
+    private void ChooseBackground()
     {
         var dialog = new OpenFileDialog
         {
-            Title = kind == BackgroundKind.Image ? "Chọn ảnh nền" : "Chọn video nền",
-            Filter = kind == BackgroundKind.Image ? "Ảnh JPG, JPEG, PNG|*.jpg;*.jpeg;*.png"
-                : "Video MP4 (ưu tiên)|*.mp4|Video khác|*.wmv;*.avi;*.mov;*.m4v;*.mkv;*.webm|Tất cả tệp|*.*",
+            Title = "Chọn ảnh hoặc video nền",
+            Filter = "Ảnh và video|*.jpg;*.jpeg;*.png;*.mp4;*.wmv;*.avi;*.mov;*.m4v;*.mkv;*.webm"
+                + "|Ảnh JPG, JPEG, PNG|*.jpg;*.jpeg;*.png"
+                + "|Video|*.mp4;*.wmv;*.avi;*.mov;*.m4v;*.mkv;*.webm",
             CheckFileExists = true,
             Multiselect = false
         };
         if (dialog.ShowDialog(this) == true)
         {
+            string extension = Path.GetExtension(dialog.FileName).ToLowerInvariant();
+            BackgroundKind kind;
+            if (extension is ".jpg" or ".jpeg" or ".png") kind = BackgroundKind.Image;
+            else if (extension is ".mp4" or ".wmv" or ".avi" or ".mov" or ".m4v" or ".mkv" or ".webm") kind = BackgroundKind.Video;
+            else
+            {
+                BackgroundStatus.Text = "Hãy chọn ảnh JPG, JPEG, PNG hoặc một tệp video được hỗ trợ.";
+                BackgroundStatus.SetResourceReference(TextBlock.ForegroundProperty, "ErrorBrush");
+                UpdateBackgroundControls();
+                return;
+            }
             selectedBackground = selectedBackground with { Kind = kind, Path = dialog.FileName };
             PreviewBackground();
         }

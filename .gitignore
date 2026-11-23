@@ -1,6 +1,10 @@
 # Local screenshots and regression tests
 /tests/Pomodoro.RegressionTests/
-/artifacts
+# Local build output, previews and generated media
+/artifact/
+/artifacts/
+/tests/Pomodoro.MusicTests/bin/
+/tests/Pomodoro.MusicTests/obj/
 
 # Local product and design notes (case-insensitive filenames)
 /[Pp][Rr][Oo][Dd][Uu][Cc][Tt].[Mm][Dd]

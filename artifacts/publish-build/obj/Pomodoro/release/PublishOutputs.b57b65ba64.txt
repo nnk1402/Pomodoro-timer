@@ -1,6 +1,0 @@
-C:\Users\ADMIN\source\repos\Pomodoro\artifacts\publish-current\Pomodoro.exe
-C:\Users\ADMIN\source\repos\Pomodoro\artifacts\publish-current\Assets\Sounds\alarm_sound.mp3
-C:\Users\ADMIN\source\repos\Pomodoro\artifacts\publish-current\Pomodoro.dll
-C:\Users\ADMIN\source\repos\Pomodoro\artifacts\publish-current\Pomodoro.deps.json
-C:\Users\ADMIN\source\repos\Pomodoro\artifacts\publish-current\Pomodoro.runtimeconfig.json
-C:\Users\ADMIN\source\repos\Pomodoro\artifacts\publish-current\Pomodoro.pdb
